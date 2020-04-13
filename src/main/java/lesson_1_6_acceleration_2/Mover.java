@@ -6,7 +6,6 @@ import processing.core.PVector;
 public class Mover extends PApplet {
     PVector location;
     PVector velocity;
-    PVector acceleration;
 
     private PApplet p;
 
@@ -17,12 +16,15 @@ public class Mover extends PApplet {
     }
 
     void update() {
-        acceleration = PVector.random2D();
-
-
-        velocity.add(acceleration);
+        velocity.add(calcAcceleration());
         location.add(velocity);
-        velocity.limit(10);
+        //velocity.limit(10);
+    }
+
+    private PVector calcAcceleration() {
+        return new PVector(p.mouseX, p.mouseY)
+                    .sub(location)
+                    .setMag(0.02f);
     }
 
     void edges() {
