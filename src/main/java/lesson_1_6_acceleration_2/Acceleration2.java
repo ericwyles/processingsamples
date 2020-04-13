@@ -13,9 +13,9 @@ public class Acceleration2 extends PApplet {
 
     @Override
     public void draw() {
-        background(255);
+        //background(255);
         m.update();
-        //m.edges();
+        m.edges();
         m.display();
     }
 
