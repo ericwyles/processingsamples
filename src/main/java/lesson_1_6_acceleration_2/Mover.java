@@ -40,8 +40,8 @@ public class Mover extends PApplet {
 
     void display() {
         p.stroke(0);
-        p.strokeWeight(1);
-        p.fill(255, 0, 0);
+        p.strokeWeight(0);
+        p.fill(255, 102, 0);
         p.ellipse(location.x, location.y, 10,10);
     }
 
