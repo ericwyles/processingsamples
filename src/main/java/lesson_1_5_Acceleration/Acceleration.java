@@ -20,6 +20,6 @@ public class Acceleration extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[]{"Acceleration2"}, new Acceleration());
+        PApplet.runSketch(new String[]{"Acceleration2NoMouse"}, new Acceleration());
     }
 }
