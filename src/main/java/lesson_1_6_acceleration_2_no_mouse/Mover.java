@@ -13,7 +13,7 @@ public class Mover extends PApplet {
     List<RGB> rgbList;
     boolean increment=true;
     int currentRgb=0;
-    private float velocityLimit = 2.5f;
+    private float velocityLimit = 3.5f;
 
     private PApplet p;
 

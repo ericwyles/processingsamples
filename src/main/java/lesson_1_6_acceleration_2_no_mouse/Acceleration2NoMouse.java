@@ -8,7 +8,7 @@ public class Acceleration2NoMouse extends PApplet {
 
     @Override
     public void settings() {
-        size(640,360);
+        size(1024,768);
         m = new Mover(this);
     }
 
