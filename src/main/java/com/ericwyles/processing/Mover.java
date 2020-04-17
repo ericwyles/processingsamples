@@ -1,4 +1,4 @@
-package lesson_1_6_acceleration_2_no_mouse;
+package com.ericwyles.processing;
 
 import processing.core.PApplet;
 import processing.core.PVector;

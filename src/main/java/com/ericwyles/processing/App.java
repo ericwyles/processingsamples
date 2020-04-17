@@ -1,8 +1,8 @@
-package lesson_1_6_acceleration_2_no_mouse;
+package com.ericwyles.processing;
 
 import processing.core.PApplet;
 
-public class YarnOfSpace extends PApplet {
+public class App extends PApplet {
     Mover m;
     boolean background=false;
 
@@ -25,6 +25,6 @@ public class YarnOfSpace extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[]{"Yarn of Space"}, new YarnOfSpace());
+        PApplet.runSketch(new String[]{"App"}, new App());
     }
 }
