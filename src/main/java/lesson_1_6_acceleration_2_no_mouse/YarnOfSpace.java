@@ -2,13 +2,13 @@ package lesson_1_6_acceleration_2_no_mouse;
 
 import processing.core.PApplet;
 
-public class Acceleration2NoMouse extends PApplet {
+public class YarnOfSpace extends PApplet {
     Mover m;
     boolean background=false;
 
     @Override
     public void settings() {
-        size(1024,768);
+        size(1280,720);
         m = new Mover(this);
     }
 
@@ -25,6 +25,6 @@ public class Acceleration2NoMouse extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[]{"Acceleration2NoMouse"}, new Acceleration2NoMouse());
+        PApplet.runSketch(new String[]{"Yarn of Space"}, new YarnOfSpace());
     }
 }
