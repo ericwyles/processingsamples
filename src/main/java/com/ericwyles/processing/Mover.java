@@ -11,13 +11,15 @@ public class Mover extends PApplet {
     PVector velocity;
     PVector acceleration;
     RGBSpectrum spectrum;
+    RGB currentRGB;
 
     private float velocityLimit = 5.0f;
 
     private PApplet p;
 
-    Mover(PApplet p) {
+    Mover(PApplet p, RGB color) {
         spectrum = new RGBSpectrum();
+        currentRGB = color;
         this.p = p;
         int initX = p.width/2;
         int initY = p.height/2;
@@ -45,8 +47,21 @@ public class Mover extends PApplet {
     }
 
     void edges() {
-        location.x = bound(location.x, p.width);
-        location.y = bound(location.y, p.height);
+        if (location.x > p.width) {
+            location.x = p.width;
+            velocity.x *= -1;
+        } else if (location.x < 0) {
+            velocity.x *= -1;
+            location.x = 0;
+        }
+
+        if (location.y > p.height) {
+            velocity.y *= -1;
+            location.y = p.height;
+        } else if (location.y < 0) {
+            velocity.y *= -1;
+            location.y = 0;
+        }
     }
 
     private float bound(float value, int max) {
@@ -56,9 +71,10 @@ public class Mover extends PApplet {
     }
 
     void display() {
-        RGB currentRGB = spectrum.getNextRgb();
-        p.stroke(currentRGB.r, currentRGB.g, currentRGB.b);
-        p.strokeWeight(0);
+        //RGB currentRGB = new RGB(255,0,0);
+        //RGB currentRGB = spectrum.getNextRgb();
+        p.stroke(0, 0, 0);
+        p.strokeWeight(1);
         p.fill(currentRGB.r, currentRGB.g, currentRGB.b);
         p.ellipse(location.x, location.y, 40,40);
     }

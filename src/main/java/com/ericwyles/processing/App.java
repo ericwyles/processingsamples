@@ -4,13 +4,16 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 public class App extends PApplet {
-    Mover m;
+    Mover m1, m2, m3, m4;
     boolean background=false;
 
     @Override
     public void settings() {
         size(1280,720);
-        m = new Mover(this);
+        m1 = new Mover(this, new RGB(255,0,0));
+        m2 = new Mover(this, new RGB(0,255,0));
+        m3 = new Mover(this, new RGB(0,0,255));
+        m4 = new Mover(this, new RGB(128,0,128));
     }
 
     @Override
@@ -20,10 +23,19 @@ public class App extends PApplet {
             background = true;
         }
 
-        PVector force = new PVector(0,0.1f);
+        PVector f1 = new PVector(0.05f,0.1f);
+        PVector f2 = new PVector(0.05f,-0.1f);
+        PVector f3 = new PVector(-0.05f,0.1f);
+        PVector f4 = new PVector(-0.05f,-0.1f);
 
-        m.applyForce(force);
+        processMover(m1,f1);
+        processMover(m2,f2);
+        processMover(m3,f3);
+        processMover(m4,f4);
+    }
 
+    void processMover(Mover m, PVector f) {
+        m.applyForce(f);
         m.update();
         m.edges();
         m.display();
