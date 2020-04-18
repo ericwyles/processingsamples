@@ -30,13 +30,14 @@ public class Mover extends PApplet {
 
 
     void applyForce(PVector force) {
-        acceleration = force;
+        acceleration.add(force);
     }
 
     void update() {
         //velocity.add(calcAcceleration());
         velocity.add(acceleration);
         location.add(velocity);
+        acceleration.mult(0);
         //velocity.limit(velocityLimit);
     }
 
