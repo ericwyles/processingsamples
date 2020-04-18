@@ -23,10 +23,10 @@ public class App extends PApplet {
             background = true;
         }
 
-        PVector f1 = new PVector(0.05f,0.1f);
-        PVector f2 = new PVector(0.05f,-0.1f);
-        PVector f3 = new PVector(-0.05f,0.1f);
-        PVector f4 = new PVector(-0.05f,-0.1f);
+        PVector f1 = new PVector(0.15f,0.11f);
+        PVector f2 = new PVector(0.25f,-0.21f);
+        PVector f3 = new PVector(-0.35f,0.31f);
+        PVector f4 = new PVector(-0.45f,-0.41f);
 
         processMover(m1,f1);
         processMover(m2,f2);
