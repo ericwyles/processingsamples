@@ -1,6 +1,7 @@
 package com.ericwyles.processing;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class App extends PApplet {
     Mover m;
@@ -14,10 +15,14 @@ public class App extends PApplet {
 
     @Override
     public void draw() {
-        if (background == false) {
+        if (!background) {
             background(244, 252, 3);
             background = true;
         }
+
+        PVector force = new PVector(0,0.1f);
+
+        m.applyForce(force);
 
         m.update();
         m.edges();

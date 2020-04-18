@@ -9,44 +9,33 @@ import java.util.List;
 public class Mover extends PApplet {
     PVector location;
     PVector velocity;
+    PVector acceleration;
+    RGBSpectrum spectrum;
 
-    List<RGB> rgbList;
-    boolean increment=true;
-    int currentRgb=0;
-    private float velocityLimit = 3.9f;
+    private float velocityLimit = 5.0f;
 
     private PApplet p;
 
     Mover(PApplet p) {
-        initRgbList();
+        spectrum = new RGBSpectrum();
         this.p = p;
-        int initX = p.width/5+30;
-        int initY = p.height/5+100;
+        int initX = p.width/2;
+        int initY = p.height/2;
         location = new PVector(initX, initY);
-        velocity = new PVector(0.5f,1.5f);
-        velocity.limit(velocityLimit);
+        velocity = new PVector(0,0);
+        acceleration = new PVector(0,0);
     }
 
-    void initRgbList() {
-        rgbList = new ArrayList<>();
-        int red, green, blue;
-        int step=15;
 
-        for (green = 0; green < 255; green=green+step) {
-            for (blue = 0; blue < 255; blue=blue+step) {
-                for (red = 0; red < 255; red=red+step) {
-
-
-                    rgbList.add(new RGB(red,green,blue));
-                }
-            }
-        }
+    void applyForce(PVector force) {
+        acceleration = force;
     }
 
     void update() {
-        velocity.add(calcAcceleration());
+        //velocity.add(calcAcceleration());
+        velocity.add(acceleration);
         location.add(velocity);
-        velocity.limit(velocityLimit);
+        //velocity.limit(velocityLimit);
     }
 
     private PVector calcAcceleration() {
@@ -67,40 +56,10 @@ public class Mover extends PApplet {
     }
 
     void display() {
-        RGB currentRGB = getNextRgb();
+        RGB currentRGB = spectrum.getNextRgb();
         p.stroke(currentRGB.r, currentRGB.g, currentRGB.b);
         p.strokeWeight(0);
         p.fill(currentRGB.r, currentRGB.g, currentRGB.b);
-        p.ellipse(location.x, location.y, 10,10);
-        if (currentRgb % 100 == 0) {
-            System.out.println(String.format("On value %d of %d. %d percent", currentRgb, rgbList.size(), currentRgb*100 / rgbList.size()));
-            System.out.println(String.format("r=%d, g=%d, b=%d",currentRGB.r, currentRGB.g, currentRGB.b));
-        }
+        p.ellipse(location.x, location.y, 40,40);
     }
-
-    RGB getNextRgb() {
-        RGB rgb = rgbList.get(currentRgb);
-
-        if (increment) {
-            currentRgb++;
-            increment = currentRgb < rgbList.size()-1;
-        } else {
-            currentRgb--;
-            increment = currentRgb == 0;
-        }
-
-
-        return rgb;
-    }
-
-    class RGB {
-        int r, g, b;
-
-        RGB(int r, int g, int b) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-        }
-    }
-
 }
